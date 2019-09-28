@@ -13,6 +13,7 @@
 		287E41D8233E9B9600C2A26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 287E41D7233E9B9600C2A26D /* Assets.xcassets */; };
 		287E41DB233E9B9600C2A26D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287E41D9233E9B9600C2A26D /* LaunchScreen.storyboard */; };
 		287E41E6233E9B9600C2A26D /* PhotoJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41E5233E9B9600C2A26D /* PhotoJournalTests.swift */; };
+		287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		287E41E1233E9B9600C2A26D /* PhotoJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		287E41E5233E9B9600C2A26D /* PhotoJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalTests.swift; sourceTree = "<group>"; };
 		287E41E7233E9B9600C2A26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				287E41D0233E9B9500C2A26D /* AppDelegate.swift */,
 				287E41D2233E9B9500C2A26D /* ViewController.swift */,
+				287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */,
 				287E41D4233E9B9500C2A26D /* Main.storyboard */,
 				287E41D7233E9B9600C2A26D /* Assets.xcassets */,
 				287E41D9233E9B9600C2A26D /* LaunchScreen.storyboard */,
@@ -199,6 +202,7 @@
 			files = (
 				287E41D3233E9B9500C2A26D /* ViewController.swift in Sources */,
 				287E41D1233E9B9500C2A26D /* AppDelegate.swift in Sources */,
+				287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
