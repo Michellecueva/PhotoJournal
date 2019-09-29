@@ -10,12 +10,15 @@ import UIKit
 
 class AddPhotoEntryViewController: UIViewController {
     
+    @IBOutlet weak var textView: UITextView!
+    
     @IBOutlet weak var entryImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        textView.text = "Enter photo description..."
+        textView.textColor = UIColor.lightGray
+        textView.delegate = self
     }
     
     @IBAction func AddPhotoFromLibrary(_ sender: UIBarButtonItem) {
@@ -42,5 +45,22 @@ extension AddPhotoEntryViewController: UIImagePickerControllerDelegate {
     }
     
   
+}
+
+extension AddPhotoEntryViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Enter photo description..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
 }
 
