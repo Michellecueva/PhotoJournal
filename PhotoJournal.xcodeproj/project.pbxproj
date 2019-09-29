@@ -14,6 +14,7 @@
 		287E41DB233E9B9600C2A26D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287E41D9233E9B9600C2A26D /* LaunchScreen.storyboard */; };
 		287E41E6233E9B9600C2A26D /* PhotoJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41E5233E9B9600C2A26D /* PhotoJournalTests.swift */; };
 		287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */; };
+		287E41F8234032EE00C2A26D /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		287E41E5233E9B9600C2A26D /* PhotoJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalTests.swift; sourceTree = "<group>"; };
 		287E41E7233E9B9600C2A26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoEntryViewController.swift; sourceTree = "<group>"; };
+		287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				287E41D0233E9B9500C2A26D /* AppDelegate.swift */,
-				287E41D2233E9B9500C2A26D /* ViewController.swift */,
-				287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */,
+				287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */,
+				287E41F6234032C000C2A26D /* Controllers */,
 				287E41D4233E9B9500C2A26D /* Main.storyboard */,
 				287E41D7233E9B9600C2A26D /* Assets.xcassets */,
 				287E41D9233E9B9600C2A26D /* LaunchScreen.storyboard */,
@@ -97,6 +99,15 @@
 				287E41E7233E9B9600C2A26D /* Info.plist */,
 			);
 			path = PhotoJournalTests;
+			sourceTree = "<group>";
+		};
+		287E41F6234032C000C2A26D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				287E41D2233E9B9500C2A26D /* ViewController.swift */,
+				287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				287E41D3233E9B9500C2A26D /* ViewController.swift in Sources */,
+				287E41F8234032EE00C2A26D /* PhotoCollectionViewCell.swift in Sources */,
 				287E41D1233E9B9500C2A26D /* AppDelegate.swift in Sources */,
 				287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */,
 			);

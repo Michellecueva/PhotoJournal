@@ -28,6 +28,11 @@ class AddPhotoEntryViewController: UIViewController {
         self.present(myPickerController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func TakePicture(_ sender: UIBarButtonItem) {
+       
+    }
+    
 }
 
 extension AddPhotoEntryViewController: UINavigationControllerDelegate {
