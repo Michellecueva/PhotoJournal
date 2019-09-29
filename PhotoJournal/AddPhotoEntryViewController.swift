@@ -10,7 +10,8 @@ import UIKit
 
 class AddPhotoEntryViewController: UIViewController {
     
-
+    @IBOutlet weak var entryImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,24 +35,12 @@ extension AddPhotoEntryViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        var newImage: UIImage
-        
-        if let possibleImage = info[.editedImage] as? UIImage {
-            newImage = possibleImage
-        } else if let possibleImage = info[.originalImage] as? UIImage {
-            newImage = possibleImage
-        } else {
-            return
-        }
-        
-        // do something interesting here!
-        print(newImage.size)
-        
-        dismiss(animated: true)
+        entryImage.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        entryImage.backgroundColor = UIColor.clear
+        self.dismiss(animated: true, completion: nil)
+
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-    }
+  
 }
 
