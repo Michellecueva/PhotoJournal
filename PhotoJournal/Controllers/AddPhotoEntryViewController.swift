@@ -26,9 +26,7 @@ class AddPhotoEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = "Enter photo description..."
-        textView.textColor = UIColor.lightGray
-        textView.delegate = self
+        configureTextView()
     }
     
     
@@ -38,6 +36,22 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     @IBAction func savePhoto(_ sender: UIBarButtonItem) {
+        
+        guard let text = textView.text else {return}
+        guard let image = entryImage.image else { return }
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        let photo = Photo(description: text, time: getCurrentTime(), image: data)
+        
+        do {
+            try PhotoPersistenceHelper.manager.save(newPhoto: photo)
+        }catch {
+            print(error)
+            
+        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
         
     }
     
@@ -70,6 +84,25 @@ class AddPhotoEntryViewController: UIViewController {
         }
     }
     
+    func configureTextView() {
+        textView.text = "Enter photo description..."
+        textView.textColor = UIColor.lightGray
+        textView.delegate = self
+    }
+    
+    func getCurrentTime() -> String {
+        
+        let now = Date()
+        
+        let formatter = DateFormatter()
+        
+        formatter.timeZone = TimeZone.current
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        return formatter.string(from: now)
+    }
+    
     func setupCaptureSession() {
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
@@ -90,7 +123,8 @@ class AddPhotoEntryViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
         }))
-        present(alert, animated: true, completion: nil)}
+        present(alert, animated: true, completion: nil)
+    }
     
 }
 

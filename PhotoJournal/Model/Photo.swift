@@ -10,6 +10,6 @@ import UIKit
 
 struct Photo: Codable {
     let description: String
-    let time: Date
+    let time: String
     let image: Data
 }
