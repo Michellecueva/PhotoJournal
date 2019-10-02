@@ -35,7 +35,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need to import photos of people</string>
+	<string>This app wants to import your photos to save to your favorites</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses camera to store your favorite pictures</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

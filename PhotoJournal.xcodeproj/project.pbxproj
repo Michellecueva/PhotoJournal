@@ -15,6 +15,9 @@
 		287E41E6233E9B9600C2A26D /* PhotoJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41E5233E9B9600C2A26D /* PhotoJournalTests.swift */; };
 		287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */; };
 		287E41F8234032EE00C2A26D /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */; };
+		28FA4A9C234304AC00A5A38B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4A9B234304AC00A5A38B /* Photo.swift */; };
+		28FA4A9F2343059D00A5A38B /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4A9E2343059D00A5A38B /* PersistenceHelper.swift */; };
+		28FA4AA12343060300A5A38B /* PhotoPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4AA02343060300A5A38B /* PhotoPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		287E41E7233E9B9600C2A26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoEntryViewController.swift; sourceTree = "<group>"; };
 		287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		28FA4A9B234304AC00A5A38B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		28FA4A9E2343059D00A5A38B /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		28FA4AA02343060300A5A38B /* PhotoPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,12 @@
 		287E41CF233E9B9500C2A26D /* PhotoJournal */ = {
 			isa = PBXGroup;
 			children = (
+				287E41D4233E9B9500C2A26D /* Main.storyboard */,
 				287E41D0233E9B9500C2A26D /* AppDelegate.swift */,
 				287E41F7234032EE00C2A26D /* PhotoCollectionViewCell.swift */,
 				287E41F6234032C000C2A26D /* Controllers */,
-				287E41D4233E9B9500C2A26D /* Main.storyboard */,
+				28FA4A9D234304B100A5A38B /* Model */,
+				28FA4AA22343063D00A5A38B /* Persistence */,
 				287E41D7233E9B9600C2A26D /* Assets.xcassets */,
 				287E41D9233E9B9600C2A26D /* LaunchScreen.storyboard */,
 				287E41DC233E9B9600C2A26D /* Info.plist */,
@@ -108,6 +116,23 @@
 				287E41F4234022E100C2A26D /* AddPhotoEntryViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		28FA4A9D234304B100A5A38B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28FA4A9B234304AC00A5A38B /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28FA4AA22343063D00A5A38B /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				28FA4AA02343060300A5A38B /* PhotoPersistence.swift */,
+				28FA4A9E2343059D00A5A38B /* PersistenceHelper.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,9 +237,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				287E41D3233E9B9500C2A26D /* ViewController.swift in Sources */,
+				28FA4AA12343060300A5A38B /* PhotoPersistence.swift in Sources */,
 				287E41F8234032EE00C2A26D /* PhotoCollectionViewCell.swift in Sources */,
 				287E41D1233E9B9500C2A26D /* AppDelegate.swift in Sources */,
 				287E41F5234022E100C2A26D /* AddPhotoEntryViewController.swift in Sources */,
+				28FA4A9F2343059D00A5A38B /* PersistenceHelper.swift in Sources */,
+				28FA4A9C234304AC00A5A38B /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

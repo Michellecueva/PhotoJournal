@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +23,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
         let AddPhotoVC = storyboard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddPhotoEntryViewController
         
-        self.navigationController?.pushViewController(AddPhotoVC, animated: true)
-        
+        self.present(AddPhotoVC, animated: true, completion: nil)
 
     }
 }
