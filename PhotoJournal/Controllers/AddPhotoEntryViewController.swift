@@ -44,8 +44,8 @@ class AddPhotoEntryViewController: UIViewController {
         guard let image = entryImage.image else { return }
         guard let data = image.jpegData(compressionQuality: 0.5) else { return }
         
-        let photo = Photo(description: text, time: getCurrentTime(), image: data)
-        
+        let photo = Photo(id: Photo.getIDForNewPhoto(),description: text, time: getCurrentTime(), image: data)
+
         do {
             try PhotoPersistenceHelper.manager.save(newPhoto: photo)
         }catch {

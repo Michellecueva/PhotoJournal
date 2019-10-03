@@ -24,5 +24,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "AddPhotoEntryViewController.savePhoto(_:):AddPhotoEntryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Photo.id">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
