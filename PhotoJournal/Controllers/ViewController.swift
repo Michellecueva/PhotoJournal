@@ -46,24 +46,30 @@ class ViewController: UIViewController {
         }
     }
     
-    func displayActionSheet() {
+    func displayActionSheet(id: Int) {
 
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
         
-//            { (action) in
-//
-//            DispatchQueue.global(qos: .utility).async {
-//                do {
-//                    try PhotoPersistenceHelper.manager.deletePhoto(withID: )
-//                }
-//            }
-//
-//
-//
-//
-//        )
+            { (action) in
+                
+                DispatchQueue.global(qos: .utility).async {
+                    do {
+                        try PhotoPersistenceHelper.manager.deletePhoto(withID: id)
+                        
+                        DispatchQueue.main.async {
+                            do {
+                                self.photos = try PhotoPersistenceHelper.manager.getPhoto()
+                            } catch {
+                                //couldn't get favorites
+                            }
+                        }
+                    } catch {
+                        //could not favorite, try again later
+                    }
+                }
+        })
         let editAction = UIAlertAction(title: "Edit", style: .default)
 //        let shareAction = UIAlertAction(title: "Share", style: .default)
         
@@ -99,7 +105,7 @@ extension ViewController: UICollectionViewDataSource {
         cell.photoImage.image = image
         
         cell.buttonFunction = {
-            self.displayActionSheet()
+            self.displayActionSheet(id: photo.id)
         }
      
         return cell
