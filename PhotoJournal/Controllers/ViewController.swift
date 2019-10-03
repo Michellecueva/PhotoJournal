@@ -50,15 +50,28 @@ class ViewController: UIViewController {
 
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+        
+//            { (action) in
+//
+//            DispatchQueue.global(qos: .utility).async {
+//                do {
+//                    try PhotoPersistenceHelper.manager.deletePhoto(withID: )
+//                }
+//            }
+//
+//
+//
+//
+//        )
         let editAction = UIAlertAction(title: "Edit", style: .default)
-        let shareAction = UIAlertAction(title: "Share", style: .default)
+//        let shareAction = UIAlertAction(title: "Share", style: .default)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(editAction)
-        optionMenu.addAction(shareAction)
+//        optionMenu.addAction(shareAction)
         optionMenu.addAction(cancelAction)
         
         self.present(optionMenu, animated: true, completion: nil)

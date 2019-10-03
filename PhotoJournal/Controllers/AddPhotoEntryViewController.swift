@@ -15,7 +15,6 @@ class AddPhotoEntryViewController: UIViewController {
     
     @IBOutlet weak var entryImage: UIImageView!
     
-    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     var savedImage : UIImage! {
@@ -84,7 +83,6 @@ class AddPhotoEntryViewController: UIViewController {
         default:
             return
         }
-
     }
     
     func configureTextView() {
@@ -143,7 +141,6 @@ extension AddPhotoEntryViewController: UIImagePickerControllerDelegate, UINaviga
         self.dismiss(animated: true, completion: nil)
 
     }
-    
   
 }
 
