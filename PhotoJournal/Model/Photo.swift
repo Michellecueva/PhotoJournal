@@ -9,7 +9,9 @@
 import UIKit
 
 struct Photo: Codable {
+//    let id: Int
     let description: String
     let time: String
     let image: Data
 }
+

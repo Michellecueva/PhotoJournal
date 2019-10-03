@@ -10,7 +10,17 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
+    var buttonFunction: (()->())?
+    
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
+    
+    @IBAction func moreButtonPressed(_ sender: UIButton) {
+        if let closure = buttonFunction {
+            closure()
+        }
+    }
+    
 }

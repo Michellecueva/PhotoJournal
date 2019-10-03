@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ViewController.displayActionSheet(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "photos[indexPath.row].id">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "photos[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewController.collectionView(_:numberOfItemsInSection:):ViewController.swift">
          <PersistentStrings>
             <PersistentString

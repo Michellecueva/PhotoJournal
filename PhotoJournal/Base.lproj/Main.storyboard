@@ -64,12 +64,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ks-AQ-aPH">
+                                                    <rect key="frame" x="239" y="251" width="75" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                                    <state key="normal" title="...">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="moreButtonPressed:" destination="Rof-pd-Ahw" eventType="touchUpInside" id="tEX-j0-UxB"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="334" height="435"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="bOm-kr-cd1" id="wEz-GJ-2Ag"/>
+                                            <outlet property="moreButton" destination="2Ks-AQ-aPH" id="qsv-vx-kZ4"/>
                                             <outlet property="photoImage" destination="tLl-Q6-aaN" id="2gq-IU-V1h"/>
                                             <outlet property="timeLabel" destination="c2X-nU-d8Q" id="7mu-pA-UcY"/>
                                         </connections>
