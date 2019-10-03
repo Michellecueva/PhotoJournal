@@ -30,9 +30,12 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     
-    
     @IBAction func AddPhotoFromLibrary(_ sender: UIBarButtonItem) {
-        setupCaptureSession()
+        checkAuthorizationForAccessingPhotos()
+    }
+    
+    @IBAction func TakePicture(_ sender: UIBarButtonItem) {
+        checkAuthorizationForAccessingPhotos()
     }
     
     @IBAction func savePhoto(_ sender: UIBarButtonItem) {
@@ -54,14 +57,13 @@ class AddPhotoEntryViewController: UIViewController {
         }
         
     }
-    
+
     @IBAction func cancelWithoutSaving(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
     
-    @IBAction func TakePicture(_ sender: UIBarButtonItem) {
-        
+    func checkAuthorizationForAccessingPhotos() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized: // The user has previously granted access to the camera.
             return setupCaptureSession()
@@ -78,10 +80,11 @@ class AddPhotoEntryViewController: UIViewController {
             
         case .restricted: // The user can't grant access due to restrictions.
             return
-           
+            
         default:
             return
         }
+
     }
     
     func configureTextView() {

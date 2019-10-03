@@ -47,30 +47,20 @@ class ViewController: UIViewController {
     }
     
     func displayActionSheet() {
-        
-        //        guard let indexPath = photoCollectionView?.indexPath(for: (((sender as AnyObject).superview?.superview) as! PhotoCollectionViewCell)) else {fatalError()}
-        //            let photo = photos[indexPath.row]
-        
-        
-        
-        // 1
+
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        // 2
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive)
         let editAction = UIAlertAction(title: "Edit", style: .default)
         let shareAction = UIAlertAction(title: "Share", style: .default)
         
-        // 3
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        // 4
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(editAction)
         optionMenu.addAction(shareAction)
         optionMenu.addAction(cancelAction)
         
-        // 5
         self.present(optionMenu, animated: true, completion: nil)
     }
 
