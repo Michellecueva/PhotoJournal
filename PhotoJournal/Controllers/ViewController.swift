@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
+        loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,17 +34,9 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
         let AddPhotoVC = storyboard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddPhotoEntryViewController
         
+        AddPhotoVC.delegate = self
         self.present(AddPhotoVC, animated: true, completion: nil)
 
-    }
-    
-    func loadData(){
-        do {
-            photos = try PhotoPersistenceHelper.manager.getPhoto()
-            
-        } catch {
-            print(error)
-        }
     }
     
     func displayActionSheet(id: Int, photo: Photo) {
@@ -76,6 +69,7 @@ class ViewController: UIViewController {
             let AddPhotoVC = storyboard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddPhotoEntryViewController
             
             AddPhotoVC.savedPhoto = photo
+            AddPhotoVC.delegate = self
             
             self.present(AddPhotoVC, animated: true, completion: nil)
             
@@ -122,6 +116,13 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: LoadDataDelegate {
+extension ViewController : LoadDataDelegate {
+    func loadData() {
+        do {
+            photos = try PhotoPersistenceHelper.manager.getPhoto()
+        } catch {
+            print(error)
+        }
     }
+}
 

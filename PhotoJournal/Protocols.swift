@@ -10,4 +10,6 @@ import Foundation
 
 protocol LoadDataDelegate: AnyObject {
     func loadData()
+    
+    
 }

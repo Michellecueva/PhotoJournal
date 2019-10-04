@@ -17,6 +17,8 @@ class AddPhotoEntryViewController: UIViewController {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    weak var delegate: LoadDataDelegate?
+    
     var savedPhoto: Photo!
     
     var savedImage : UIImage! {
@@ -61,8 +63,10 @@ class AddPhotoEntryViewController: UIViewController {
         do {
             if savedPhoto != nil {
                 try PhotoPersistenceHelper.manager.editPhoto(withID: savedPhoto.id, newPhoto: photo)
+                delegate?.loadData()
             } else {
                 try PhotoPersistenceHelper.manager.save(newPhoto: photo)
+                delegate?.loadData()
             }
         }catch {
             print(error)
