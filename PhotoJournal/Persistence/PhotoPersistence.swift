@@ -27,6 +27,14 @@ struct PhotoPersistenceHelper {
         }
     }
     
+    func editPhoto(withID: Int, newPhoto: Photo) throws {
+        do {
+            let photos = try getPhoto()
+            guard let indexOfOldPhoto = photos.firstIndex(where: {$0.id == withID}) else {return}
+            try persistenceHelper.saveAtSpecificIndex(newElement: newPhoto, index: indexOfOldPhoto)
+            try deletePhoto(withID: withID)
+        }
+    }
     
     private let persistenceHelper = PersistenceHelper<Photo>(fileName: "photos.plist")
     

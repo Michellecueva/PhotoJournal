@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadData()
+//        loadData()
     }
  
     @IBAction func pushToAddEntryVC(_ sender: UIBarButtonItem) {
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
             let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
             let AddPhotoVC = storyboard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddPhotoEntryViewController
             
-            AddPhotoVC.photo = photo
+            AddPhotoVC.savedPhoto = photo
             
             self.present(AddPhotoVC, animated: true, completion: nil)
             
@@ -122,4 +122,6 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+extension ViewController: LoadDataDelegate {
+    }
 
