@@ -27,6 +27,7 @@ struct PhotoPersistenceHelper {
         }
     }
     
+    
     private let persistenceHelper = PersistenceHelper<Photo>(fileName: "photos.plist")
     
     private init() {}

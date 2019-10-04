@@ -17,6 +17,8 @@ class AddPhotoEntryViewController: UIViewController {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    var photo: Photo!
+    
     var savedImage : UIImage! {
         didSet {
             entryImage.image = savedImage
@@ -26,6 +28,17 @@ class AddPhotoEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if photo != nil {
+            textView.text = photo.description
+            textView.textColor = UIColor.black
+            let image = UIImage(data: photo.image)
+            entryImage.image =  image
+
+        }
     }
     
     
@@ -146,7 +159,7 @@ extension AddPhotoEntryViewController: UIImagePickerControllerDelegate, UINaviga
 
 extension AddPhotoEntryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.lightGray && photo == nil {
             textView.text = nil
             textView.textColor = UIColor.black
         }

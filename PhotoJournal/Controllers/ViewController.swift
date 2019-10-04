@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func displayActionSheet(id: Int) {
+    func displayActionSheet(id: Int, photo: Photo) {
 
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -62,15 +62,25 @@ class ViewController: UIViewController {
                             do {
                                 self.photos = try PhotoPersistenceHelper.manager.getPhoto()
                             } catch {
-                                //couldn't get favorites
+                                print(error)
                             }
                         }
                     } catch {
-                        //could not favorite, try again later
+                        print(error)
                     }
                 }
         })
-        let editAction = UIAlertAction(title: "Edit", style: .default)
+        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { (action) in
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
+            let AddPhotoVC = storyboard.instantiateViewController(withIdentifier: "addPhotoVC") as! AddPhotoEntryViewController
+            
+            AddPhotoVC.photo = photo
+            
+            self.present(AddPhotoVC, animated: true, completion: nil)
+            
+            
+        })
 //        let shareAction = UIAlertAction(title: "Share", style: .default)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -105,7 +115,7 @@ extension ViewController: UICollectionViewDataSource {
         cell.photoImage.image = image
         
         cell.buttonFunction = {
-            self.displayActionSheet(id: photo.id)
+            self.displayActionSheet(id: photo.id, photo: photo)
         }
      
         return cell
