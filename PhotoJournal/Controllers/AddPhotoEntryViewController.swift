@@ -17,6 +17,8 @@ class AddPhotoEntryViewController: UIViewController {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     weak var delegate: LoadDataDelegate?
     
     var savedPhoto: Photo!
@@ -30,6 +32,7 @@ class AddPhotoEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextView()
+        configureImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +42,7 @@ class AddPhotoEntryViewController: UIViewController {
             textView.textColor = UIColor.black
             let image = UIImage(data: savedPhoto.image)
             entryImage.image =  image
-
+            formValidation()
         }
     }
     
@@ -83,10 +86,56 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     
+    func configureTextView() {
+        textView.text = "Enter photo description..."
+        textView.textColor = UIColor.lightGray
+        textView.delegate = self
+        formValidation()
+    }
+    
+    func configureImage() {
+        if entryImage.image == nil {
+            entryImage.image = UIImage(named: "noImage")
+        }
+    }
+    
+    func formValidation() {
+        
+        if textView.text != "Enter photo description..." , entryImage.image != UIImage(named: "noImage") {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+    }
+
+    
+    func getCurrentTime() -> String {
+        
+        let now = Date()
+        
+        let formatter = DateFormatter()
+        
+        formatter.timeZone = TimeZone.current
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        return formatter.string(from: now)
+    }
+    
+    func setupCaptureSession() {
+        DispatchQueue.main.async {
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self
+            self.present(myPickerController, animated: true, completion: nil)
+
+        }
+    }
+
     func checkAuthorizationForAccessingPhotos() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized: // The user has previously granted access to the camera.
             return setupCaptureSession()
+            
             
         case .notDetermined: // The user has not yet been asked for camera access.
             AVCaptureDevice.requestAccess(for: .video) { granted in
@@ -106,32 +155,6 @@ class AddPhotoEntryViewController: UIViewController {
         }
     }
     
-    func configureTextView() {
-        textView.text = "Enter photo description..."
-        textView.textColor = UIColor.lightGray
-        textView.delegate = self
-    }
-    
-    func getCurrentTime() -> String {
-        
-        let now = Date()
-        
-        let formatter = DateFormatter()
-        
-        formatter.timeZone = TimeZone.current
-        
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
-        return formatter.string(from: now)
-    }
-    
-    func setupCaptureSession() {
-        let myPickerController = UIImagePickerController()
-        myPickerController.delegate = self
-        self.present(myPickerController, animated: true, completion: nil)
-    }
-
-    
     func alertCameraAccessNeeded() {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
       
@@ -147,7 +170,6 @@ class AddPhotoEntryViewController: UIViewController {
         }))
         present(alert, animated: true, completion: nil)
     }
-    
 }
 
 
@@ -158,6 +180,7 @@ extension AddPhotoEntryViewController: UIImagePickerControllerDelegate, UINaviga
         let image = info[.originalImage] as? UIImage
         
         savedImage = image
+        formValidation()
         entryImage.backgroundColor = UIColor.clear
         self.dismiss(animated: true, completion: nil)
 
@@ -170,6 +193,7 @@ extension AddPhotoEntryViewController: UITextViewDelegate {
         if textView.textColor == UIColor.lightGray && savedPhoto == nil {
             textView.text = nil
             textView.textColor = UIColor.black
+            formValidation()
         }
     }
     
@@ -177,6 +201,7 @@ extension AddPhotoEntryViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "Enter photo description..."
             textView.textColor = UIColor.lightGray
+            formValidation()
         }
     }
     

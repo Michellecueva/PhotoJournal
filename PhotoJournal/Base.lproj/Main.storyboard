@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tbh-6t-wRN">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XtE-Jx-oBU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,13 +20,16 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem systemItem="add" id="9fb-EK-MRm">
-                                        <inset key="imageInsets" minX="175" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <action selector="pushToAddEntryVC:" destination="BYZ-38-t0r" id="n7j-uF-iMi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uur-B7-rov"/>
-                                    <barButtonItem title="Item" id="dq1-6t-WsZ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mj3-Gb-7ge"/>
+                                    <barButtonItem title="Item" image="gear" catalog="system" id="R0Z-mp-Ar1">
+                                        <connections>
+                                            <action selector="goToSettings:" destination="BYZ-38-t0r" id="Vba-94-ky5"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EiA-MH-9Qp">
@@ -120,28 +121,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKR-aR-xCS">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem title="Photo Library" id="QKh-QD-72S">
-                                        <connections>
-                                            <action selector="AddPhotoFromLibrary:" destination="lJJ-Uz-kl3" id="7Xs-1s-khx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="camera" id="cfF-xX-XQc">
-                                        <inset key="imageInsets" minX="400" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="TakePicture:" destination="lJJ-Uz-kl3" id="FBC-zb-FgQ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beN-CU-Mf6">
-                                <rect key="frame" x="0.0" y="309" width="414" height="509"/>
+                                <rect key="frame" x="0.0" y="234" width="414" height="509"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="5Fv-0i-IHz">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="390"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Fv-0i-IHz">
+                                        <rect key="frame" x="0.0" y="87" width="414" height="390"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -173,6 +158,22 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKR-aR-xCS">
+                                <rect key="frame" x="0.0" y="743" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Photo Library" id="QKh-QD-72S">
+                                        <connections>
+                                            <action selector="AddPhotoFromLibrary:" destination="lJJ-Uz-kl3" id="7Xs-1s-khx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="cfF-xX-XQc">
+                                        <inset key="imageInsets" minX="400" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="TakePicture:" destination="lJJ-Uz-kl3" id="FBC-zb-FgQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -185,6 +186,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="cfF-xX-XQc" id="czw-2f-r8G"/>
                         <outlet property="entryImage" destination="5Fv-0i-IHz" id="Ih2-5W-rkI"/>
+                        <outlet property="saveButton" destination="31S-eg-jgm" id="khu-jN-aQi"/>
                         <outlet property="textView" destination="DCJ-CQ-Jtn" id="y0l-f3-c9v"/>
                     </connections>
                 </viewController>
@@ -195,7 +197,7 @@
         <!--SettingsVC-->
         <scene sceneID="df9-4Z-7g3">
             <objects>
-                <viewController id="Tbh-6t-wRN" customClass="SettingsVC" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsVC" id="Tbh-6t-wRN" customClass="SettingsVC" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RGA-AD-pjQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,6 +271,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="noImage" width="170" height="170"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
     </resources>
 </document>

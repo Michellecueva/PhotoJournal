@@ -25,9 +25,6 @@ class ViewController: UIViewController {
         loadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        loadData()
-    }
  
     @IBAction func pushToAddEntryVC(_ sender: UIBarButtonItem) {
         
@@ -36,7 +33,16 @@ class ViewController: UIViewController {
         
         AddPhotoVC.delegate = self
         self.present(AddPhotoVC, animated: true, completion: nil)
+        
+        
 
+    }
+    
+    @IBAction func goToSettings(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
+        let SettingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        
+        self.present(SettingsVC, animated: true, completion: nil)
     }
     
     func displayActionSheet(id: Int, photo: Photo) {
