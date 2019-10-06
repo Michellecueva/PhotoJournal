@@ -16,40 +16,36 @@ class SettingsVC: UIViewController {
     
     var scrollDirection = 0 {
         didSet {
-            scrollDirectionSegment.selectedSegmentIndex = scrollDirection
             UserDefaultsWrapper.shared.store(scrollDirection: scrollDirection)
         }
     }
     
     var backgroundMode = 0 {
         didSet {
-            BackgroundModeSegment.selectedSegmentIndex = backgroundMode
             UserDefaultsWrapper.shared.store(backgroundMode: backgroundMode)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(scrollDirectionSegment.selectedSegmentIndex)
-        print(BackgroundModeSegment.selectedSegmentIndex)
+        
+        guard let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
+        scrollDirectionSegment.selectedSegmentIndex = savedScrollDirection
+        
+        guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {
+            return
+        }
+        BackgroundModeSegment.selectedSegmentIndex = savedBackgroundMode
     }
     
     
     @IBAction func changeScrollDirection(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            print("Int should be 0")
-        } else  {
-            print("Int should be 1")
-        }
+        scrollDirection = sender.selectedSegmentIndex
     }
     
     
     @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            print("Int should be 0")
-        } else  {
-            print("Int should be 1")
-        }
+        backgroundMode = sender.selectedSegmentIndex
     }
     
     
