@@ -206,23 +206,25 @@
                                 <rect key="frame" x="54" y="167" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Mode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHI-fH-oGK">
                                 <rect key="frame" x="54" y="246" width="145" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vN2-8o-sFk">
-                                <rect key="frame" x="207" y="239" width="151" height="28"/>
+                                <rect key="frame" x="207" y="237" width="151" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <segments>
-                                    <segment title="Light Mode"/>
-                                    <segment title="Dark Mode"/>
+                                    <segment title="Light "/>
+                                    <segment title="Dark "/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeBackgroundMode:" destination="Tbh-6t-wRN" eventType="valueChanged" id="P3M-7H-7X5"/>
                                 </connections>
@@ -231,27 +233,32 @@
                                 <rect key="frame" x="167" y="78" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.035400390625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7vH-Dl-60U">
                                 <rect key="frame" x="207" y="161" width="151" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88132673501968384" green="0.89034134149551392" blue="0.90157192945480347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Vertical"/>
                                     <segment title="Horizontal"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeScrollDirection:" destination="Tbh-6t-wRN" eventType="valueChanged" id="7nx-tO-tkz"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92494064569473267" green="0.92507356405258179" blue="0.92491155862808228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eQN-xd-D6q"/>
                     </view>
                     <connections>
                         <outlet property="BackgroundModeSegment" destination="vN2-8o-sFk" id="vIV-UX-ADo"/>
+                        <outlet property="backgroundLabel" destination="UHI-fH-oGK" id="NpE-z6-kdM"/>
                         <outlet property="scrollDirectionSegment" destination="7vH-Dl-60U" id="eqw-Gm-X9e"/>
+                        <outlet property="scrollLabel" destination="DBU-EG-p3I" id="aNg-Yj-c6E"/>
+                        <outlet property="settingsLabel" destination="BS6-r0-CVe" id="bF4-Cv-bbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3H-J2-T4R" userLabel="First Responder" sceneMemberID="firstResponder"/>

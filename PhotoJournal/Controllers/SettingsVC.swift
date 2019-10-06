@@ -14,6 +14,13 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var BackgroundModeSegment: UISegmentedControl!
     
+    @IBOutlet weak var scrollLabel: UILabel!
+    
+    @IBOutlet weak var backgroundLabel: UILabel!
+    
+    @IBOutlet weak var settingsLabel: UILabel!
+    
+    
     var delegate: SetSettingsDelegate?
     
     var scrollDirection = 0 {
@@ -30,14 +37,8 @@ class SettingsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
-        scrollDirectionSegment.selectedSegmentIndex = savedScrollDirection
-        
-        guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {
-            return
-        }
-        BackgroundModeSegment.selectedSegmentIndex = savedBackgroundMode
+        setSegments()
+        setBackgroundModeForView()
     }
     
     
@@ -49,8 +50,36 @@ class SettingsVC: UIViewController {
     
     @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
         backgroundMode = sender.selectedSegmentIndex
+        setBackgroundModeForView()
         delegate?.setSettings()
         delegate?.setCellColor()
+    }
+    
+    private func setSegments() {
+        
+        guard let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
+        guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        
+        scrollDirectionSegment.selectedSegmentIndex = savedScrollDirection
+        BackgroundModeSegment.selectedSegmentIndex = savedBackgroundMode
+    }
+    
+    private func setBackgroundModeForView() {
+        
+        let textColor = backgroundMode == 0 ? UIColor.black : UIColor.white
+        let settingsColor = backgroundMode == 0 ? UIColor.systemBlue : UIColor.white
+        let backgroundColor = backgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.black
+        let segmentColor = backgroundMode == 0 ? UIColor.lightText : UIColor.darkGray
+               
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
+        scrollDirectionSegment.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        BackgroundModeSegment.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        scrollDirectionSegment.backgroundColor = segmentColor
+        BackgroundModeSegment.backgroundColor = segmentColor
+        scrollLabel.textColor = textColor
+        backgroundLabel.textColor = textColor
+        settingsLabel.textColor = settingsColor
+        self.view.backgroundColor = backgroundColor
     }
     
     
