@@ -66,10 +66,13 @@ class SettingsVC: UIViewController {
     
     private func setBackgroundModeForView() {
         
-        let textColor = backgroundMode == 0 ? UIColor.black : UIColor.white
-        let settingsColor = backgroundMode == 0 ? UIColor.systemBlue : UIColor.white
-        let backgroundColor = backgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.black
-        let segmentColor = backgroundMode == 0 ? UIColor.lightText : UIColor.darkGray
+         guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        
+        
+        let textColor = savedBackgroundMode == 0 ? UIColor.black : UIColor.white
+        let settingsColor = savedBackgroundMode == 0 ? UIColor.systemBlue : UIColor.white
+        let backgroundColor = savedBackgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.black
+        let segmentColor = savedBackgroundMode == 0 ? UIColor.lightText : UIColor.darkGray
                
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
         scrollDirectionSegment.setTitleTextAttributes(titleTextAttributes, for: .normal)
