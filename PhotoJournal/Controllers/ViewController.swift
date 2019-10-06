@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         self.present(SettingsVC, animated: true, completion: nil)
     }
     
-    func displayActionSheet(id: Int, photo: Photo) {
+    private func displayActionSheet(id: Int, photo: Photo) {
 
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -130,9 +130,6 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-}
 
 extension ViewController : LoadDataDelegate {
     func loadData() {
@@ -153,7 +150,7 @@ extension ViewController: SetSettingsDelegate {
                return textColor
     }
     
-    func setCellColor()  {
+     func setCellColor()  {
          guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {
             cellColor = UIColor.white
             return
@@ -165,13 +162,21 @@ extension ViewController: SetSettingsDelegate {
         cellColor = backgroundColor
     }
     
-    func setSettings() {
+     func setSettings() {
         
         guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        guard  let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
         
         let backgroundColor = savedBackgroundColor == 0 ? UIColor.lightGray : UIColor.black
         
         photoCollectionView.backgroundColor = backgroundColor
+        
+        let direction = savedScrollDirection == 0 ? UICollectionView.ScrollDirection.vertical : UICollectionView.ScrollDirection.horizontal
+        
+        if let layout = photoCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = direction
+        }
+        
     }
     
     
