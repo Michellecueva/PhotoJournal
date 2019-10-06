@@ -202,19 +202,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7vH-Dl-60U">
-                                <rect key="frame" x="207" y="132" width="151" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Vertical"/>
-                                    <segment title="Horizontal"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changeScrollDirection:" destination="Tbh-6t-wRN" eventType="valueChanged" id="7nx-tO-tkz"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scroll Direction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBU-EG-p3I">
-                                <rect key="frame" x="54" y="138" width="131" height="21"/>
+                                <rect key="frame" x="54" y="167" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -236,6 +225,24 @@
                                 </segments>
                                 <connections>
                                     <action selector="changeBackgroundMode:" destination="Tbh-6t-wRN" eventType="valueChanged" id="P3M-7H-7X5"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS6-r0-CVe">
+                                <rect key="frame" x="167" y="78" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7vH-Dl-60U">
+                                <rect key="frame" x="207" y="161" width="151" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Vertical"/>
+                                    <segment title="Horizontal"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeScrollDirection:" destination="Tbh-6t-wRN" eventType="valueChanged" id="7nx-tO-tkz"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
