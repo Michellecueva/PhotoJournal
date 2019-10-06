@@ -6,10 +6,15 @@
 //  Copyright © 2019 Michelle Cueva. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol LoadDataDelegate: AnyObject {
     func loadData()
-    
-    
 }
+
+protocol SetSettingsDelegate: AnyObject {
+    func setSettings()
+    func setCellColor () 
+    func setTextColor() -> UIColor
+}
+

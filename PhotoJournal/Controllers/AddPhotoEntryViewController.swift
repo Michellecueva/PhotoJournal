@@ -204,6 +204,4 @@ extension AddPhotoEntryViewController: UITextViewDelegate {
             formValidation()
         }
     }
-    
 }
-

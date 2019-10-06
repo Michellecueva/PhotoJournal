@@ -14,6 +14,8 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var BackgroundModeSegment: UISegmentedControl!
     
+    var delegate: SetSettingsDelegate?
+    
     var scrollDirection = 0 {
         didSet {
             UserDefaultsWrapper.shared.store(scrollDirection: scrollDirection)
@@ -41,11 +43,14 @@ class SettingsVC: UIViewController {
     
     @IBAction func changeScrollDirection(_ sender: UISegmentedControl) {
         scrollDirection = sender.selectedSegmentIndex
+        delegate?.setSettings()
     }
     
     
     @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
         backgroundMode = sender.selectedSegmentIndex
+        delegate?.setSettings()
+        delegate?.setCellColor()
     }
     
     

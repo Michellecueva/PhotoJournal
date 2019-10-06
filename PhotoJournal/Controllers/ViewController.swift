@@ -18,11 +18,14 @@ class ViewController: UIViewController {
         }
     }
     
+    var cellColor: UIColor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollectionView.dataSource = self
         loadData()
+        setSettings()
+        setCellColor()
     }
     
  
@@ -41,6 +44,8 @@ class ViewController: UIViewController {
     @IBAction func goToSettings(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard.init(name: "Main", bundle:nil)
         let SettingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsVC
+        
+        SettingsVC.delegate = self
         
         self.present(SettingsVC, animated: true, completion: nil)
     }
@@ -108,8 +113,10 @@ extension ViewController: UICollectionViewDataSource {
         
         let photo = photos[indexPath.row]
         cell.descriptionLabel.text = photo.description
+        cell.descriptionLabel.textColor = setTextColor()
         cell.timeLabel.text = photo.time
-        
+        cell.timeLabel.textColor = setTextColor()
+        cell.backgroundColor = cellColor
         let image = UIImage(data: photo.image)
         
         cell.photoImage.image = image
@@ -117,9 +124,14 @@ extension ViewController: UICollectionViewDataSource {
         cell.buttonFunction = {
             self.displayActionSheet(id: photo.id, photo: photo)
         }
-     
+        
+        cell.moreButton.setTitleColor(setTextColor(), for: .normal)
         return cell
     }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
 }
 
 extension ViewController : LoadDataDelegate {
@@ -132,3 +144,35 @@ extension ViewController : LoadDataDelegate {
     }
 }
 
+extension ViewController: SetSettingsDelegate {
+    func setTextColor() -> UIColor {
+         guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return UIColor.white}
+                      
+               let textColor = savedBackgroundColor == 0 ? UIColor.black : UIColor.white
+               
+               return textColor
+    }
+    
+    func setCellColor()  {
+         guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {
+            cellColor = UIColor.white
+            return
+        }
+        let backgroundColor = savedBackgroundColor == 0 ? UIColor.white : UIColor.darkGray
+        
+         photoCollectionView.reloadData()
+        
+        cellColor = backgroundColor
+    }
+    
+    func setSettings() {
+        
+        guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        
+        let backgroundColor = savedBackgroundColor == 0 ? UIColor.lightGray : UIColor.black
+        
+        photoCollectionView.backgroundColor = backgroundColor
+    }
+    
+    
+}
