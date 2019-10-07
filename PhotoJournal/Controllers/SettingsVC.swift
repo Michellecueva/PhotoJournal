@@ -20,7 +20,6 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var settingsLabel: UILabel!
     
-    
     var delegate: SetSettingsDelegate?
     
     var scrollDirection = 0 {
@@ -41,12 +40,10 @@ class SettingsVC: UIViewController {
         setBackgroundModeForView()
     }
     
-    
     @IBAction func changeScrollDirection(_ sender: UISegmentedControl) {
         scrollDirection = sender.selectedSegmentIndex
         delegate?.setSettings()
     }
-    
     
     @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
         backgroundMode = sender.selectedSegmentIndex
@@ -56,7 +53,6 @@ class SettingsVC: UIViewController {
     }
     
     private func setSegments() {
-        
         guard let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
         guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
         
@@ -65,14 +61,11 @@ class SettingsVC: UIViewController {
     }
     
     private func setBackgroundModeForView() {
-        
-         guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
-        
-        
+        guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
         let textColor = savedBackgroundMode == 0 ? UIColor.black : UIColor.white
         let settingsColor = savedBackgroundMode == 0 ? UIColor.systemBlue : UIColor.white
-        let backgroundColor = savedBackgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.black
-        let segmentColor = savedBackgroundMode == 0 ? UIColor.lightText : UIColor.darkGray
+        let backgroundColor = savedBackgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.darkGray
+        let segmentColor = savedBackgroundMode == 0 ? UIColor.groupTableViewBackground : UIColor.darkGray
                
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
         scrollDirectionSegment.setTitleTextAttributes(titleTextAttributes, for: .normal)
@@ -84,6 +77,4 @@ class SettingsVC: UIViewController {
         settingsLabel.textColor = settingsColor
         self.view.backgroundColor = backgroundColor
     }
-    
-    
 }

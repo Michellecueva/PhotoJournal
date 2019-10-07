@@ -21,6 +21,7 @@
 		28FE47242347A04500A72422 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE47232347A04500A72422 /* Protocols.swift */; };
 		28FE472B2347E61C00A72422 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE472A2347E61C00A72422 /* SettingsVC.swift */; };
 		28FE472D2347E7B200A72422 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE472C2347E7B200A72422 /* UserDefaults.swift */; };
+		28FF3791234AE438001C6CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 287E41D7233E9B9600C2A26D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FF3791234AE438001C6CE7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

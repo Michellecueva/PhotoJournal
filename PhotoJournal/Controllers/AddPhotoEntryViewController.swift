@@ -36,7 +36,6 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if savedPhoto != nil {
             textView.text = savedPhoto.description
             textView.textColor = UIColor.black
@@ -44,8 +43,8 @@ class AddPhotoEntryViewController: UIViewController {
             entryImage.image =  image
             formValidation()
         }
+        setUserSettings()
     }
-    
     
     @IBAction func AddPhotoFromLibrary(_ sender: UIBarButtonItem) {
         checkAuthorizationForAccessingPhotos()
@@ -56,12 +55,11 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     @IBAction func savePhoto(_ sender: UIBarButtonItem) {
-        
         guard let text = textView.text else {return}
         guard let image = entryImage.image else { return }
         guard let data = image.jpegData(compressionQuality: 0.5) else { return }
         
-        let photo = Photo(id: Photo.getIDForNewPhoto(),description: text, time: getCurrentTime(), image: data)
+        let photo = Photo(id: Photo.getIDForNewPhoto(),description: text, image: data)
 
         do {
             if savedPhoto != nil {
@@ -85,22 +83,32 @@ class AddPhotoEntryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    private func setUserSettings() {
+        guard let userSettings = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+
+             if userSettings == 0 {
+                 textView.backgroundColor = .white
+                 self.view.backgroundColor = .lightGray
+             } else {
+                 textView.backgroundColor = .black
+                 self.view.backgroundColor = .darkGray
+             }
+    }
     
-    func configureTextView() {
+    private func configureTextView() {
         textView.text = "Enter photo description..."
         textView.textColor = UIColor.lightGray
         textView.delegate = self
         formValidation()
     }
     
-    func configureImage() {
+    private func configureImage() {
         if entryImage.image == nil {
             entryImage.image = UIImage(named: "noImage")
         }
     }
     
-    func formValidation() {
-        
+    private func formValidation() {
         if textView.text != "Enter photo description..." , entryImage.image != UIImage(named: "noImage") {
             saveButton.isEnabled = true
         } else {
@@ -109,20 +117,7 @@ class AddPhotoEntryViewController: UIViewController {
     }
 
     
-    func getCurrentTime() -> String {
-        
-        let now = Date()
-        
-        let formatter = DateFormatter()
-        
-        formatter.timeZone = TimeZone.current
-        
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
-        return formatter.string(from: now)
-    }
-    
-    func setupCaptureSession() {
+    private func setupCaptureSession() {
         DispatchQueue.main.async {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
@@ -131,12 +126,11 @@ class AddPhotoEntryViewController: UIViewController {
         }
     }
 
-    func checkAuthorizationForAccessingPhotos() {
+    private func checkAuthorizationForAccessingPhotos() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized: // The user has previously granted access to the camera.
             return setupCaptureSession()
-            
-            
+    
         case .notDetermined: // The user has not yet been asked for camera access.
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
@@ -155,16 +149,16 @@ class AddPhotoEntryViewController: UIViewController {
         }
     }
     
-    func alertCameraAccessNeeded() {
+    private func alertCameraAccessNeeded() {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
       
-       let alert = UIAlertController(
+        let alert = UIAlertController(
         title: "Need Camera Access",
                 message: "Camera access is required to make full use of this app.",
                 preferredStyle: UIAlertController.Style.alert
             )
       
-       alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
         }))
@@ -176,16 +170,12 @@ class AddPhotoEntryViewController: UIViewController {
 extension AddPhotoEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         let image = info[.originalImage] as? UIImage
-        
         savedImage = image
         formValidation()
         entryImage.backgroundColor = UIColor.clear
         self.dismiss(animated: true, completion: nil)
-
     }
-  
 }
 
 extension AddPhotoEntryViewController: UITextViewDelegate {

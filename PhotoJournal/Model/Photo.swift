@@ -24,5 +24,26 @@ struct Photo: Codable {
         }
        return 0
     }
+    
+    static func getCurrentTime() -> String {
+        
+        let now = Date()
+        
+        let formatter = DateFormatter()
+        
+        formatter.timeZone = TimeZone.current
+        
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        
+        return formatter.string(from: now)
+    }
+    
+    init(id: Int, description: String, image: Data) {
+        self.id = id
+        self.description = description
+        self.image = image
+        self.time = Photo.getCurrentTime()
+    }
+        
 }
 
