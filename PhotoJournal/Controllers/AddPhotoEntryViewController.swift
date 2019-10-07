@@ -36,13 +36,8 @@ class AddPhotoEntryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if savedPhoto != nil {
-            textView.text = savedPhoto.description
-            let image = UIImage(data: savedPhoto.image)
-            entryImage.image =  image
-            formValidation()
-        }
         setUserSettings()
+        setEditingPhoto()
     }
     
     @IBAction func AddPhotoFromLibrary(_ sender: UIBarButtonItem) {
@@ -92,6 +87,25 @@ class AddPhotoEntryViewController: UIViewController {
                  textView.backgroundColor = .black
                  self.view.backgroundColor = .darkGray
              }
+    }
+    
+    private func setEditingPhoto() {
+        if savedPhoto != nil {
+            textView.text = savedPhoto.description
+            let image = UIImage(data: savedPhoto.image)
+            entryImage.image =  image
+            formValidation()
+            
+            guard let userSettings = UserDefaultsWrapper.shared.getBackgroundMode() else {
+                textView.textColor = .black
+                return
+            }
+                   if userSettings == 0 {
+                                  textView.textColor = UIColor.black
+                              } else {
+                                  textView.textColor = UIColor.white
+                              }
+        }
     }
     
     private func configureTextView() {
