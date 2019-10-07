@@ -170,8 +170,9 @@ extension ViewController: SetSettingsDelegate {
             let barColor = savedBackgroundColor == 0 ? UIColor.groupTableViewBackground: UIColor.gray
             let itemColor = savedBackgroundColor == 0 ? UIColor.systemBlue: UIColor.white
             photoCollectionView.backgroundColor = backgroundColor
-                   toolBar.barTintColor = barColor
-                   toolBar.tintColor = itemColor
+            toolBar.barTintColor = barColor
+            toolBar.tintColor = itemColor
+            navigationController?.navigationBar.barTintColor = barColor
         }
         
         if let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() {
