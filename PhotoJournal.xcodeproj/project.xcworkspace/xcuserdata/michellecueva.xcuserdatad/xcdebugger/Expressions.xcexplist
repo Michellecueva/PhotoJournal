@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewController.collectionView(_:cellForItemAt:):ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cellColor">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "ViewController.displayActionSheet(_:):ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -21,6 +13,39 @@
             </PersistentString>
             <PersistentString
                value = "photos[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsVC.changeBackgroundMode(_:):SettingsVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "backgroundMode">
+            </PersistentString>
+            <PersistentString
+               value = "UserDefaultsWrapper.shared.getBackgroundMode()">
+            </PersistentString>
+            <PersistentString
+               value = "sender.selectedSegmentIndex">
+            </PersistentString>
+            <PersistentString
+               value = "savedScrollDirection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddPhotoEntryViewController.savePhoto(_:):AddPhotoEntryViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Photo.id">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.collectionView(_:cellForItemAt:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -47,12 +72,29 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddPhotoEntryViewController.savePhoto(_:):AddPhotoEntryViewController.swift">
+         contextName = "SettingsVC.backgroundMode.didset:SettingsVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Photo.id">
+               value = "UserDefaultsWrapper.shared.getBackgroundMode() ">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsVC.viewWillAppear(_:):SettingsVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BackgroundModeSegment.selectedSegmentIndex">
+            </PersistentString>
+            <PersistentString
+               value = "UserDefaultsWrapper.shared.getBackgroundMode()">
+            </PersistentString>
+            <PersistentString
+               value = "scrollDirectionSegment.selectedSegmentIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.setCellColor():ViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

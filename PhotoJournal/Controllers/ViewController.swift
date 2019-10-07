@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    @IBOutlet weak var toolBar: UIToolbar!
     var photos = [Photo]() {
         didSet {
             photoCollectionView.reloadData()
@@ -143,7 +144,7 @@ extension ViewController : LoadDataDelegate {
 
 extension ViewController: SetSettingsDelegate {
     func setTextColor() -> UIColor {
-         guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return UIColor.white}
+         guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return UIColor.black}
                       
                let textColor = savedBackgroundColor == 0 ? UIColor.black : UIColor.white
                
@@ -155,7 +156,7 @@ extension ViewController: SetSettingsDelegate {
             cellColor = UIColor.white
             return
         }
-        let backgroundColor = savedBackgroundColor == 0 ? UIColor.white : UIColor.darkGray
+        let backgroundColor = savedBackgroundColor == 0 ? UIColor.white : UIColor.black
         
          photoCollectionView.reloadData()
         
@@ -164,20 +165,22 @@ extension ViewController: SetSettingsDelegate {
     
      func setSettings() {
         
-        guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
-        guard  let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
+        if let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() {
+            let backgroundColor = savedBackgroundColor == 0 ? UIColor.lightGray : UIColor.darkGray
+            let barColor = savedBackgroundColor == 0 ? UIColor.groupTableViewBackground: UIColor.gray
+            let itemColor = savedBackgroundColor == 0 ? UIColor.systemBlue: UIColor.white
+            photoCollectionView.backgroundColor = backgroundColor
+                   toolBar.barTintColor = barColor
+                   toolBar.tintColor = itemColor
+        }
         
-        let backgroundColor = savedBackgroundColor == 0 ? UIColor.lightGray : UIColor.black
-        
-        photoCollectionView.backgroundColor = backgroundColor
-        
-        let direction = savedScrollDirection == 0 ? UICollectionView.ScrollDirection.vertical : UICollectionView.ScrollDirection.horizontal
-        
-        if let layout = photoCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = direction
+        if let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() {
+            let direction = savedScrollDirection == 0 ? UICollectionView.ScrollDirection.vertical : UICollectionView.ScrollDirection.horizontal
+            
+            if let layout = photoCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.scrollDirection = direction
+            }
         }
         
     }
-    
-    
 }

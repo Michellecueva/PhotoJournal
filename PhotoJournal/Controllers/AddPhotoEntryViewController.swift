@@ -38,7 +38,6 @@ class AddPhotoEntryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if savedPhoto != nil {
             textView.text = savedPhoto.description
-            textView.textColor = UIColor.black
             let image = UIImage(data: savedPhoto.image)
             entryImage.image =  image
             formValidation()
@@ -185,6 +184,14 @@ extension AddPhotoEntryViewController: UITextViewDelegate {
             textView.textColor = UIColor.black
             formValidation()
         }
+        
+        guard let userSettings = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        if userSettings == 0 {
+                       textView.textColor = UIColor.black
+                   } else {
+                       textView.textColor = UIColor.white
+                   }
+        formValidation()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

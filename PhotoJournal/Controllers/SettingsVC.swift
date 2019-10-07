@@ -40,6 +40,11 @@ class SettingsVC: UIViewController {
         setBackgroundModeForView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setSegments()
+        setBackgroundModeForView()
+    }
+    
     @IBAction func changeScrollDirection(_ sender: UISegmentedControl) {
         scrollDirection = sender.selectedSegmentIndex
         delegate?.setSettings()
@@ -52,12 +57,14 @@ class SettingsVC: UIViewController {
         delegate?.setCellColor()
     }
     
-    private func setSegments() {
-        guard let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() else {return}
-        guard  let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
-        
-        scrollDirectionSegment.selectedSegmentIndex = savedScrollDirection
-        BackgroundModeSegment.selectedSegmentIndex = savedBackgroundMode
+    func setSegments() {
+        if let savedScrollDirection = UserDefaultsWrapper.shared.getScrollDirection() {
+            scrollDirectionSegment.selectedSegmentIndex = savedScrollDirection
+        }
+       
+        if let savedBackgroundMode = UserDefaultsWrapper.shared.getBackgroundMode() {
+            BackgroundModeSegment.selectedSegmentIndex = savedBackgroundMode
+        }
     }
     
     private func setBackgroundModeForView() {
