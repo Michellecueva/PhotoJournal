@@ -37,9 +37,6 @@ class ViewController: UIViewController {
         
         AddPhotoVC.delegate = self
         self.present(AddPhotoVC, animated: true, completion: nil)
-        
-        
-
     }
     
     @IBAction func goToSettings(_ sender: UIBarButtonItem) {
@@ -84,18 +81,13 @@ class ViewController: UIViewController {
             AddPhotoVC.delegate = self
             
             self.present(AddPhotoVC, animated: true, completion: nil)
-            
-            
         })
-//        let shareAction = UIAlertAction(title: "Share", style: .default)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(editAction)
-//        optionMenu.addAction(shareAction)
         optionMenu.addAction(cancelAction)
-        
         self.present(optionMenu, animated: true, completion: nil)
     }
 
@@ -146,9 +138,8 @@ extension ViewController: SetSettingsDelegate {
     func setTextColor() -> UIColor {
          guard  let savedBackgroundColor = UserDefaultsWrapper.shared.getBackgroundMode() else {return UIColor.black}
                       
-               let textColor = savedBackgroundColor == 0 ? UIColor.black : UIColor.white
-               
-               return textColor
+        let textColor = savedBackgroundColor == 0 ? UIColor.black : UIColor.white
+        return textColor
     }
     
      func setCellColor()  {
@@ -169,6 +160,7 @@ extension ViewController: SetSettingsDelegate {
             let backgroundColor = savedBackgroundColor == 0 ? UIColor.lightGray : UIColor.darkGray
             let barColor = savedBackgroundColor == 0 ? UIColor.groupTableViewBackground: UIColor.gray
             let itemColor = savedBackgroundColor == 0 ? UIColor.systemBlue: UIColor.white
+            
             photoCollectionView.backgroundColor = backgroundColor
             toolBar.barTintColor = barColor
             toolBar.tintColor = itemColor

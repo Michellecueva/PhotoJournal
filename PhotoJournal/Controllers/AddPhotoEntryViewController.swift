@@ -23,6 +23,10 @@ class AddPhotoEntryViewController: UIViewController {
     
     var savedPhoto: Photo!
     
+    var descriptionPlaceHolder = "Enter photo description..."
+    
+    var defaultImage = UIImage(named: "noImage")
+    
     var savedImage : UIImage! {
         didSet {
             entryImage.image = savedImage
@@ -58,11 +62,10 @@ class AddPhotoEntryViewController: UIViewController {
         do {
             if savedPhoto != nil {
                 try PhotoPersistenceHelper.manager.editPhoto(withID: savedPhoto.id, newPhoto: photo)
-                delegate?.loadData()
             } else {
                 try PhotoPersistenceHelper.manager.save(newPhoto: photo)
-                delegate?.loadData()
             }
+             delegate?.loadData()
         }catch {
             print(error)
             
@@ -70,7 +73,6 @@ class AddPhotoEntryViewController: UIViewController {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
         }
-        
     }
 
     @IBAction func cancelWithoutSaving(_ sender: UIBarButtonItem) {
@@ -79,14 +81,13 @@ class AddPhotoEntryViewController: UIViewController {
     
     private func setUserSettings() {
         guard let userSettings = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
+        
+        let textViewColor = userSettings == 0 ? UIColor.white : UIColor.black
+        let backgroundColor =  userSettings == 0 ? UIColor.lightGray: UIColor.darkGray
 
-             if userSettings == 0 {
-                 textView.backgroundColor = .white
-                 self.view.backgroundColor = .lightGray
-             } else {
-                 textView.backgroundColor = .black
-                 self.view.backgroundColor = .darkGray
-             }
+        textView.backgroundColor = textViewColor
+        self.view.backgroundColor = backgroundColor
+             
     }
     
     private func setEditingPhoto() {
@@ -100,16 +101,13 @@ class AddPhotoEntryViewController: UIViewController {
                 textView.textColor = .black
                 return
             }
-                   if userSettings == 0 {
-                                  textView.textColor = UIColor.black
-                              } else {
-                                  textView.textColor = UIColor.white
-                              }
+            let textViewColor = userSettings == 0 ? UIColor.black : UIColor.white
+            textView.textColor = textViewColor
         }
     }
     
     private func configureTextView() {
-        textView.text = "Enter photo description..."
+        textView.text = descriptionPlaceHolder
         textView.textColor = UIColor.lightGray
         textView.delegate = self
         formValidation()
@@ -117,16 +115,14 @@ class AddPhotoEntryViewController: UIViewController {
     
     private func configureImage() {
         if entryImage.image == nil {
-            entryImage.image = UIImage(named: "noImage")
+            entryImage.image = defaultImage
         }
     }
     
     private func formValidation() {
-        if textView.text != "Enter photo description..." , entryImage.image != UIImage(named: "noImage") {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
-        }
+        let validUserInput = textView.text != descriptionPlaceHolder
+        let imagePresent = entryImage.image != defaultImage
+        saveButton.isEnabled = validUserInput && imagePresent
     }
 
     
@@ -200,17 +196,14 @@ extension AddPhotoEntryViewController: UITextViewDelegate {
         }
         
         guard let userSettings = UserDefaultsWrapper.shared.getBackgroundMode() else {return}
-        if userSettings == 0 {
-                       textView.textColor = UIColor.black
-                   } else {
-                       textView.textColor = UIColor.white
-                   }
+        let textViewColor = userSettings == 0 ? UIColor.black : UIColor.white
+        textView.textColor = textViewColor
         formValidation()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Enter photo description..."
+            textView.text = descriptionPlaceHolder
             textView.textColor = UIColor.lightGray
             formValidation()
         }
